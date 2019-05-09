@@ -40,4 +40,12 @@ module.exports = function(app) {
       res.send("you're already logged in");
     }
   });
+
+  app.put("/api/login", (req, res) => {
+    db.auth.update(req.body, {
+        where: {
+          username: req.body.username
+        }
+    }).then(r => res.json(r));
+  });
 };
