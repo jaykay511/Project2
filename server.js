@@ -5,7 +5,7 @@ var exphbs = require("express-handlebars");
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8008;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -30,7 +30,7 @@ var syncOptions = { force: false };
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
 if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
+  //syncOptions.force = true;
 }
 
 // Starting the server, syncing our models ------------------------------------/
