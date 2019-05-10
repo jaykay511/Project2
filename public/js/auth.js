@@ -40,7 +40,10 @@ $(() => {
             }
             $.post("/api/login", newUser, () => {
                 location.reload();
-            })
+            });
+        }
+        else{
+            $("#cerror").html("Passwords you entered don't match!");
         }
     }
 
@@ -53,7 +56,7 @@ $(() => {
                 username: user,
                 loggedIn: true
             }
-        }).then(() => window.location.href = '/loggedin');
+        }).then(() => window.location.href = '/loggedin?user=' + user);
     }
 
     //function that runs when create account button is submitted
@@ -68,8 +71,6 @@ $(() => {
         $.get("/api/login", d => {
             if (!existCheck(ue, d)) {
                 createAcct(ue, pw1, pw2);
-            } else {
-                console.log("passwords don't match!");
             }
         });
     }
@@ -86,7 +87,7 @@ $(() => {
             if (existCheck(user, d) && pwCheck(pw, d)) {
                 logIn(user);
             } else {
-                console.log("Check your Credetials and try again!");
+                $("#lerror").html("Check your Credetials and try again!");
             }
         })
 

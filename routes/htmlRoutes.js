@@ -15,7 +15,12 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
-  app.get("/loggedIn/", (req, res) => {
+  app.get('/dash', (req,res) => {
+    res.render("dash", {username: req.query.user});
+  });
+
+  app.get("/loggedIn", (req, res) => {
+    console.log(req.query);
     res.sendFile(path.join(__dirname, "../public/loggedIn.html"));
   });
 

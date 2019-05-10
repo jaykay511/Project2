@@ -33,3 +33,7 @@
     color: blue;
     cursor: pointer;
 }
+#cerror, #lerror{
+    color: red;
+    font-size: 12px;
+}
