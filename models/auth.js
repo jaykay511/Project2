@@ -9,11 +9,15 @@ module.exports = (seq, dt) => {
                     msg: "must be an email"
                 },
                 len: {
-                    args: [[1,20]],
+                    args: [
+                        [1, 20]
+                    ],
                     msg: "you need from 1 - 20 characters for your username"
                 },
                 notIn: {
-                    args: [[' ']],
+                    args: [
+                        [' ']
+                    ],
                     msg: "spaces are not allowed"
                 }
             }
@@ -24,11 +28,15 @@ module.exports = (seq, dt) => {
             defaultValue: false,
             validation: {
                 len: {
-                    args: [[1,20]],
+                    args: [
+                        [1, 20]
+                    ],
                     msg: "you need from 1 - 20 characters for your username"
                 },
                 notIn: {
-                    args: [[' ']],
+                    args: [
+                        [' ']
+                    ],
                     msg: "spaces are not allowed"
                 }
             }

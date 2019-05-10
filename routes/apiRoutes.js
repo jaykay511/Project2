@@ -1,6 +1,6 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Get all examples
   // app.get("/api/exaauthmples", function(req, res) {
   //   db.Example.findAll({}).then(function(dbExamples) {
@@ -21,17 +21,16 @@ module.exports = function(app) {
   //     res.json(dbExample);
   //   });
   // });
-  app.get("/api/login", (req,res) => {
+  app.get("/api/login", (req, res) => {
     db.auth.findAll({}).then(r => res.json(r));
   })
 
-  app.post("/api/login", (req,res) => {
+  app.post("/api/login", (req, res) => {
     let rb = req.body;
-    if(rb.loggedIn){
+    if (rb.loggedIn) {
       console.log("logging in");
       db.auth.create(rb).then(login => res.json(login));
-    }
-    else{
+    } else {
       console.log('not logged in');
       res.send("you're already logged in");
     }
@@ -41,9 +40,10 @@ module.exports = function(app) {
     console.log(req.body);
     db.auth.update({
       loggedIn: req.body.loggedIn
-    }, 
-    {
-      where: { username: req.body.username }
+    }, {
+      where: {
+        username: req.body.username
+      }
     }).then(r => res.json(r));
   });
 };

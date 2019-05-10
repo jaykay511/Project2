@@ -3,9 +3,9 @@ $(() => {
     let existCheck = (userInput, d) => {
         console.log(d);
         console.log(userInput);
-        for(let i = 0; i<d.length;i++){
+        for (let i = 0; i < d.length; i++) {
             console.log("input username: " + userInput + "\n db username: " + d[i].username);
-            if(d[i].username === userInput){
+            if (d[i].username === userInput) {
                 console.log("Found a match\ninput username: " + userInput + "\n db username: " + d[i].username);
                 console.log("Username Already Exists");
                 return true;
@@ -18,9 +18,9 @@ $(() => {
     let pwCheck = (pw, d) => {
         console.log(d);
         console.log(pw);
-        for(let i = 0; i<d.length;i++){
+        for (let i = 0; i < d.length; i++) {
             console.log("input password: " + pw + "\n db password: " + d[i].password);
-            if(d[i].password === pw){
+            if (d[i].password === pw) {
                 console.log("Found a match\ninput password: " + pw + "\n db password: " + d[i].password);
                 console.log("PW Matched");
                 return true;
@@ -53,7 +53,7 @@ $(() => {
                 username: user,
                 loggedIn: true
             }
-        }).then( () => window.location.href = '/loggedin');
+        }).then(() => window.location.href = '/loggedin');
     }
 
     //function that runs when create account button is submitted
@@ -66,10 +66,9 @@ $(() => {
         let pw2 = $("#createpwInput2").val().trim();
 
         $.get("/api/login", d => {
-            if(!existCheck(ue, d)){
+            if (!existCheck(ue, d)) {
                 createAcct(ue, pw1, pw2);
-            }
-            else{
+            } else {
                 console.log("passwords don't match!");
             }
         });
@@ -84,14 +83,13 @@ $(() => {
         let user = $("#eInput").val().trim();
         let pw = $("#pwInput").val().trim();
         $.get("/api/login", d => {
-            if(existCheck(user, d) && pwCheck(pw, d)){
+            if (existCheck(user, d) && pwCheck(pw, d)) {
                 logIn(user);
-            }
-            else{
+            } else {
                 console.log("Check your Credetials and try again!");
             }
         })
-        
+
     }
 
     //function to fade in the create account and fade out everything else
