@@ -29,11 +29,7 @@ module.exports = function(app) {
     let rb = req.body;
     if(rb.loggedIn){
       console.log("logging in");
-      db.auth.create({
-        username: rb.username,
-        password: rb.password,
-        loggedIn: true
-      }).then(login => res.json(login));
+      db.auth.create(rb).then(login => res.json(login));
     }
     else{
       console.log('not logged in');
