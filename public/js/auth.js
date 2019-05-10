@@ -11,7 +11,7 @@ $(() => {
                 return true;
             }
         }
-        console.log("Success! New User!");
+        console.log("New Username Found");
         return false;
     }
 
@@ -35,54 +35,42 @@ let createform = e => {
     e.preventDefault();
 
     let ue = $("#createInput").val().trim();
-    console.log("username saved");
     let pw1 = $("#createpwInput1").val().trim();
-    console.log("p1 saved");
     let pw2 = $("#createpwInput2").val().trim();
-    console.log("p2 saved");
 
     $.get("/api/login", d => {
         if(!existCheck(ue, d)){
             createAcct(ue, pw1, pw2);
         }
+        else{
+            console.log("passwords don't match!");
+        }
     });
 }
 
 
-
+//function that runs when login is submitted
 let submitForm = e => {
-    let dbUn;
-    let dbPw;
-    let dbLi;
-    console.log("form submitted");
+    console.log("login started");
     e.preventDefault();
 
-    let un = $("#eInput").val().trim();
-    let pw = $("#pwInput").val().trim();
-    let login = {
-        loggedIn: true,
-    };
 
-    $.get("/api/login", d => {
-
-    });
-
-    let loggedin = (x) => {
-        $.ajax({
-            method: "PUT",
-            url: "/api/login",
-            data: x
-        }).then(() => console.log("Successfully Logged In"));
-    }
-
-   
-
-    // $.post("/api/login", login, () => {
-    //     //window.location.href = "/loggdIn";
-    // });
+    
 }
 
-$("#loginform").on("submit", submitForm);
-$("#createBtn").on("click", createform);
+//function to fade in the create account and fade out everything else
+let createClick = () => {
+    $("#right").fadeOut();
+    $("#left").fadeOut();
+    setTimeout(() => {
+        $(".wrapper").css("grid-template-columns", "1fr");
+        $("#createform").fadeIn(800).css("display", 'grid');
+    }, 400);
+}
 
+//click functions
+$("#loginform").on("click", submitForm);
+$("#createBtn").on("click", createform);
+$("#create").on("click", createClick);
+$("#back").on("click", () => location.reload());
 });

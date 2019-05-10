@@ -13,3 +13,17 @@
 #right{
     border-left: 1px gray solid;
 }
+#createform{
+    display: none;
+}
+#back{
+    font-size: 12px;
+    text-decoration: none;
+    color: grey;
+    outline: none;
+    text-align: end;
+}
+#back:hover{
+    color: blue;
+    cursor: pointer;
+}
