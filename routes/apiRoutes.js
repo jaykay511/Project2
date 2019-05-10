@@ -38,10 +38,12 @@ module.exports = function(app) {
   });
 
   app.put("/api/login", (req, res) => {
-    db.auth.update(req.body, {
-        where: {
-          username: req.body.username
-        }
+    console.log(req.body);
+    db.auth.update({
+      loggedIn: req.body.loggedIn
+    }, 
+    {
+      where: { username: req.body.username }
     }).then(r => res.json(r));
   });
 };
