@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+.env
+=======
+>>>>>>> 34ff2d314b0ccce5207a20a5ce976640c8501418
+misc
 config
 node_modules
 .DS_Store

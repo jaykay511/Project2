@@ -1,29 +1,10 @@
 var db = require("../models");
 
+
 module.exports = function (app) {
-  // Get all examples
-  // app.get("/api/exaauthmples", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.json(dbExamples);
-  //   });
-  // });
-
-  // Create a new example
-  // app.post("/api/login", function(req, res) {
-  //   db.Auth.create(req.body).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
-
-  // Delete an example by id
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
   app.get("/api/login", (req, res) => {
     db.auth.findAll({}).then(r => res.json(r));
-  })
+  });
 
   app.post("/api/login", (req, res) => {
     let rb = req.body;
@@ -45,5 +26,26 @@ module.exports = function (app) {
         username: req.body.username
       }
     }).then(r => res.json(r));
+  });
+
+  // Get all doctors
+  app.get("/api/doctors", function(req, res) {
+    db.Doctor.findAll({}).then(function(dbDoctors) {
+      res.json(dbDoctors);
+    });
+  });
+
+  // Create a new example
+  app.post("/api/doctors", function(req, res) {
+    db.Doctor.create(req.body).then(function(dbDoctor) {
+      res.json(dbDoctor);
+    });
+  });
+
+  // Delete an example by id
+  app.delete("/api/doctors/:id", function(req, res) {
+    db.Doctor.destroy({ where: { id: req.params.id } }).then(function(dbDoctor) {
+      res.json(dbDoctor);
+    });
   });
 };
