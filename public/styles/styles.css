@@ -1,3 +1,24 @@
-.list-group-item {
-  line-height: 2.5;
+html, body{
+  height: 100%;
+  width: 100%;
+  font-family: 'Archivo', sans-serif;
+}
+.jumbotron{
+  height: 300px;
+}
+#main{
+  display: grid;
+  grid-template-columns: 1fr 8fr 3fr;
+  grid-column-gap: 20px;
+}
+#profilepic{
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+#middle img{
+  width: 100%;
+  border: 1px inset lightgray;
+  border-radius: 5px;
 }
