@@ -3,6 +3,9 @@ html, body{
   width: 100%;
   font-family: 'Archivo', sans-serif;
 }
+.jumbotron{
+  height: 300px;
+}
 #main{
   display: grid;
   grid-template-columns: 1fr 8fr 3fr;
