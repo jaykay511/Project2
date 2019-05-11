@@ -1,0 +1,39 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+#right,
+#left {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+
+#right {
+    border-left: 1px gray solid;
+}
+
+#createform {
+    display: none;
+}
+
+#back {
+    font-size: 12px;
+    text-decoration: none;
+    color: grey;
+    outline: none;
+    text-align: end;
+}
+
+#back:hover {
+    color: blue;
+    cursor: pointer;
+}
+#cerror, #lerror{
+    color: red;
+    font-size: 12px;
+}
