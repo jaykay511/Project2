@@ -1,5 +1,5 @@
 var db = require("../models");
-
+//console.log(db);
 
 module.exports = function (app) {
   app.get("/api/login", (req, res) => {
@@ -91,24 +91,46 @@ module.exports = function (app) {
     });
   });
 
-   // Get all pills
-   app.get("/api/pills", function(req, res) {
-    db.Prescription.findAll({}).then(function(dbPills) {
-      res.json(dbPills);
+   // Get all timeslots
+   app.get("/api/timeslots", function(req, res) {
+    db.TimeSlot.findAll({include: [db.Doctor, db.Patient]}).then(function(dbTimeslots) {
+      res.json(dbTimeslots);
     });
   });
 
-  // Create a new pills
-  app.post("/api/pills", function(req, res) {
-    db.Prescription.create(req.body).then(function(dbPills) {
-      res.json(dbPills);
+  // Create a new timeslot
+  app.post("/api/timeslots", function(req, res) {
+    db.TimeSlot.create(req.body).then(function(dbTimeSlot) {
+      res.json(dbTimeSlot);
     });
   });
 
-  // Delete an pills by id
-  app.delete("/api/pills/:id", function(req, res) {
-    db.Prescription.destroy({ where: { id: req.params.id } }).then(function(dbPills) {
-      res.json(dbPills);
+  // Delete an timeslots by id
+  app.delete("/api/timeslots/:id", function(req, res) {
+    db.TimeSlot.destroy({ where: { id: req.params.id } }).then(function(dbTimeSlots) {
+      res.json(dbTimeSlots);
+    });
+  });
+
+  // Get all PrescriptionsPatients
+  app.get("/api/prescriptionspatients", function(req, res) {
+    db.PrescriptionsPatient.findAll({include: [db.Prescription, db.Patient]}).then(function(dbPrescriptionsPatients) {
+      res.json(dbPrescriptionsPatients);
+    });
+  });
+
+  // Create a new PrescriptionsPatients
+  app.post("/api/prescriptionspatients", function(req, res) {
+    console.log(req.body);
+    db.PrescriptionsPatients.create(req.body).then(function(dbPrescriptionsPatients) {
+      res.json(dbPrescriptionsPatients);
+    });
+  });
+
+  // Delete an PrescriptionsPatients by id
+  app.delete("/api/prescriptionspatients/:id", function(req, res) {
+    db.PrescriptionsPatients.destroy({ where: { id: req.params.id } }).then(function(dbPrescriptionsPatients) {
+      res.json(dbPrescriptionsPatients);
     });
   });
 };
