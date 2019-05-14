@@ -19,10 +19,10 @@ module.exports = function (app) {
     res.render("dash", {username: req.query.user});
   });
 
-  app.get("/loggedIn", (req, res) => {
-    console.log(req.query);
-    res.sendFile(path.join(__dirname, "../public/loggedIn.html"));
-  });
+  // app.get("/loggedIn", (req, res) => {
+  //   console.log(req.query);
+  //   res.sendFile(path.join(__dirname, "../public/loggedIn.html"));
+  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {

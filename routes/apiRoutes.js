@@ -2,10 +2,13 @@ var db = require("../models");
 
 
 module.exports = function (app) {
+
+  //Get all patients logins
   app.get("/api/login", (req, res) => {
     db.auth.findAll({}).then(r => res.json(r));
   });
 
+  //Create a new user
   app.post("/api/login", (req, res) => {
     let rb = req.body;
     if (rb.loggedIn) {
@@ -17,6 +20,7 @@ module.exports = function (app) {
     }
   });
 
+  //Change user loggedIn Status from False to True upon login
   app.put("/api/login", (req, res) => {
     console.log(req.body);
     db.auth.update({

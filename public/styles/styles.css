@@ -3,13 +3,18 @@ html, body{
   width: 100%;
   font-family: 'Archivo', sans-serif;
 }
-.jumbotron{
-  height: 300px;
-}
 #main{
+display: grid;
+}
+.jumbotron{
+  grid-column: 1/12;
+  padding: 20px;
+}
+#body{
   display: grid;
   grid-template-columns: 1fr 8fr 3fr;
   grid-column-gap: 20px;
+  grid-template-rows: 1fr;
 }
 #profilepic{
   width: 100%;

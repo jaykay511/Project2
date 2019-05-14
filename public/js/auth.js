@@ -56,7 +56,7 @@ $(() => {
                 username: user,
                 loggedIn: true
             }
-        }).then(() => window.location.href = '/loggedin?user=' + user);
+        }).then(() => window.location.href = '/dash?user=' + user);
     }
 
     //function that runs when create account button is submitted
