@@ -1,7 +1,7 @@
 <div id='main'>
     <header class="jumbotron">
         <h1 class="display-3">Welcome to your UCLA MedDash!</h1>
-        <p class="lead">You're currently logged in with the email {{email}}</p>
+        <p class="lead">You're currently logged in with the email {{profile.email}}</p>
         <hr class="my-4">
         <p>Are you new to our dashboard? click below to get more info</p>
         <p class="lead">
@@ -47,7 +47,7 @@
             <div class="card mb-3">
                 <h3 class="card-header">{{first}} {{last}}</h3>
                 <div class="card-body">
-                    <h6 class="card-subtitle text-muted">status: active</h6>
+                    <h6 class="card-subtitle text-muted">status: {{auth.loggedIn}}</h6>
                 </div>
                 <div id = 'profilepic'>
                     <img style="width: 90%; display: block;" src="img/profile.png" alt="Card image">
@@ -56,15 +56,15 @@
                     <p class="card-text"></p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Address: <br> {{address}}</li>
-                    <li class="list-group-item">Phone: <br> {{phone}}</li>
-                    <li class="list-group-item">Email: <br> {{email}}</li>
+                    <li class="list-group-item">Address: <br> {{profile.address}}</li>
+                    <li class="list-group-item">Phone: <br> {{profile.phone}}</li>
+                    <li class="list-group-item">Email: <br> {{profile.email}}</li>
                 </ul>
                 <div class="card-body">
                     <a href="#" class="card-link">Update Info</a>
                 </div>
                 <div class="card-footer text-muted">
-                    Last Login: {{updatedAt}}
+                    Last Login: {{profile.updatedAt}}
                 </div>
             </div>
         </div>

@@ -20,19 +20,27 @@ module.exports = function (app) {
     let email = req.query.user;
     db.Patient.findAll({where: {email: email}}).then(r => {
       let user = r[0];
-      console.log("this is the user info: " + user.email);
+      db.auth.findAll({where: {username: email}}).then(re => {
+        let auth = re[0];
+
+      //console.log("this is the user info: " + user.email);
       res.render("dash", {
-        id: user.id,
-        first: user.first_name,
-        last: user.last_name,
-        address: user.address,
-        phone: user.phone,
-        email: user.email,
-        created: user.createdAt,
-        updated: user.updatedAt
+          profile: {
+            id: user.id,
+            first: user.first_name,
+            last: user.last_name,
+            address: user.address,
+            phone: user.phone,
+            email: user.email,
+            created: user.createdAt,
+            updated: user.updatedAt
+          },
+          auth: {
+            loggedIn: auth.loggedIn
+          },
+        });
       });
     });
-
   });
 
   // app.get("/loggedIn", (req, res) => {
