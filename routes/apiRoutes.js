@@ -32,6 +32,13 @@ module.exports = function (app) {
     }).then(r => res.json(r));
   });
 
+  //add a patient to patient table when a new user is created
+  app.post("/api/users", (req,res) => {
+    let rb = req.body;
+    //console.log("req.body from api routes: " + rb.email);
+    db.Patient.create(rb).then(res.send("new patient created"));
+  })
+
   // Get all doctors
   app.get("/api/doctors", function(req, res) {
     db.Doctor.findAll({}).then(function(dbDoctors) {

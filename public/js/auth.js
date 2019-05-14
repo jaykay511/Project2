@@ -39,6 +39,10 @@ $(() => {
                 loggedIn: false
             }
             $.post("/api/login", newUser, () => {
+                    let userObj = {email: un}
+                    $.post("/api/users", userObj, () => {
+                        console.log("done");
+                    });
                 location.reload();
             });
         }
