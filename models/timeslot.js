@@ -13,8 +13,8 @@ module.exports = function(sequelize, DataTypes) {
       //   TimeSlot.belongsTo(models.Doctor,{foreignKey: {name: "DoctorId", unique: false} });
       // }
       TimeSlot.associate = (models) => {
-      TimeSlot.belongsTo(models.Patient, {through: models.TimeSlot, unique: false, foreignKey: {name: "PatientId", unique: false}});
-      TimeSlot.belongsTo(models.Doctor, {through: models.TimeSlot, unique: false, foreignKey: {name: "DoctorId", unique: false}});
+        TimeSlot.belongsTo(models.Patient, {through: models.TimeSlot, unique: false, foreignKey: {name: "PatientId", unique: false}});
+        TimeSlot.belongsTo(models.Doctor, {through: models.TimeSlot, unique: false, foreignKey: {name: "DoctorId", unique: false}});
       }
 
       return TimeSlot;

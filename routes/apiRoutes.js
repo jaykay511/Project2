@@ -122,14 +122,14 @@ module.exports = function (app) {
   // Create a new PrescriptionsPatients
   app.post("/api/prescriptionspatients", function(req, res) {
     console.log(req.body);
-    db.PrescriptionsPatients.create(req.body).then(function(dbPrescriptionsPatients) {
+    db.PrescriptionsPatient.create(req.body).then(function(dbPrescriptionsPatients) {
       res.json(dbPrescriptionsPatients);
     });
   });
 
   // Delete an PrescriptionsPatients by id
   app.delete("/api/prescriptionspatients/:id", function(req, res) {
-    db.PrescriptionsPatients.destroy({ where: { id: req.params.id } }).then(function(dbPrescriptionsPatients) {
+    db.PrescriptionsPatient.destroy({ where: { id: req.params.id } }).then(function(dbPrescriptionsPatients) {
       res.json(dbPrescriptionsPatients);
     });
   });
