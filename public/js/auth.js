@@ -39,6 +39,10 @@ $(() => {
                 loggedIn: false
             }
             $.post("/api/login", newUser, () => {
+                    let userObj = {email: un}
+                    $.post("/api/users", userObj, () => {
+                        console.log("done");
+                    });
                 location.reload();
             });
         }
@@ -56,7 +60,7 @@ $(() => {
                 username: user,
                 loggedIn: true
             }
-        }).then(() => window.location.href = '/loggedin?user=' + user);
+        }).then(() => window.location.href = '/dash?user=' + user);
     }
 
     //function that runs when create account button is submitted
