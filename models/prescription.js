@@ -3,8 +3,9 @@ module.exports = function(sequelize, DataTypes) {
       name: DataTypes.STRING
     });
     
-    // Prescription.associate = models=> {
-    //   Prescription.belongsToMany(models.Patient, { through: PrescriptionsPatients });
+    // Prescription.associate = function(models) {
+    //    //Prescription.hasMany(models.PrescriptionPatient);
+    //    Prescription.belongsToMany(models.Patient, { through: models.PrescriptionsPatient, unique: false });
     // }
     //Prescription.hasMany(Patient);
     return Prescription;
