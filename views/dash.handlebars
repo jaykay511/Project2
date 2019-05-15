@@ -41,7 +41,13 @@
             </ul>
         </div>
         <div id = 'middle'>
-            <img src="img/cal.png" alt="calendar img">
+            <div class="container-fluid px-4">
+                <div class="row">
+                <div class="col-xs-12">
+                    <div id="calendar"></div>
+                </div>
+                </div>
+            </div>
         </div>
         <div id = 'right'>
             <div class="card mb-3">
@@ -66,7 +72,18 @@
                 <div class="card-footer text-muted">
                     Last Login: {{profile.updatedAt}}
                 </div>
+                
             </div>
+            <div>
+                    <ul class="list-group list-group-flush" style="display:none">
+                        {{#each timeslots}}
+                    <li class="timeslot" data-doctorid={{this.DoctorId}} data-patientid={{this.PatientId}} data-patientname={{this.Patient.last_name}} data-doctorname={{this.Doctor.last_name}} data-doctorspecialty={{this.Doctor.specialty}}>{{this.timeslot}}</li>
+                        {{/each}}
+                </div>
         </div>
     </div>
 </div>
+
+{{!-- <script src="/js/jquery-calendar.js"></script> --}}
+<script src="/js/calendar.js"></script>
+

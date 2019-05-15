@@ -6,6 +6,9 @@ module.exports = function(sequelize, DataTypes) {
         autoIncrement: true
       },
         timeslot: DataTypes.DATE
+      //   get: function() {
+      //     return moment.utc(this.getDataValue('TimeSlot')).format('YYYY-MM-DD')
+      // }
       });
     
       // TimeSlot.associate = (models) => {
