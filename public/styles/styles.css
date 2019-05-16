@@ -27,3 +27,20 @@ display: grid;
   border: 1px inset lightgray;
   border-radius: 5px;
 }
+#upInfo{
+  position: absolute;
+  display: grid;
+  width: 300px;
+  height: 500px;
+  z-index: 100;
+  background: rgba(231, 231, 231, 0.897);
+  border: 1px grey solid;
+  border-radius: 5px;
+  top: calc(50% - 250px);
+  left: calc(50% - 150px);
+}
+#close{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

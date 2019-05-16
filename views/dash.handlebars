@@ -45,7 +45,7 @@
         </div>
         <div id = 'right'>
             <div class="card mb-3">
-                <h3 class="card-header">{{first}} {{last}}</h3>
+                <h3 class="card-header">{{profile.first}} {{profile.last}}</h3>
                 <div class="card-body">
                     <h6 class="card-subtitle text-muted">status: {{auth.loggedIn}}</h6>
                 </div>
@@ -67,6 +67,27 @@
                     Last Login: {{profile.updatedAt}}
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div id = "upInfo">
+    <div id = 'close'>x</div>
+    <div id = 'container'>
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm" for="inputSmall">First Name</label>
+            <input class="form-control form-control-sm" type="text" placeholder={{profile.first}} id="inputSmall">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm" for="inputSmall">Last Name</label>
+            <input class="form-control form-control-sm" type="text" placeholder={{profile.last}} id="inputSmall">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm" for="inputSmall">Address</label>
+            <input class="form-control form-control-sm" type="text" placeholder={{profile.address}} id="inputSmall">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm" for="inputSmall">Email</label>
+            <input class="form-control form-control-sm" type="text" placeholder={{profile.email}} id="inputSmall">
         </div>
     </div>
 </div>
