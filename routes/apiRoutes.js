@@ -21,7 +21,7 @@ module.exports = function (app) {
 
   //Change user loggedIn Status from False to True upon login
   app.put("/api/login", (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     db.auth.update({
       loggedIn: req.body.loggedIn
     }, {
@@ -34,9 +34,20 @@ module.exports = function (app) {
   //add a patient to patient table when a new user is created
   app.post("/api/users", (req,res) => {
     let rb = req.body;
-    //console.log("req.body from api routes: " + rb.email);
+    // console.log("req.body from api routes: " + rb.email);
     db.Patient.create(rb).then(res.send("new patient created"));
-  })
+  });
+
+  //update patient info
+  app.put("/api/users", (req,res) => {
+    let rb = req.body;
+    console.log('this is the RB EMAIL: ' + rb.email);
+    db.Patient.update(rb, {
+    where: {
+      email: rb.email
+    }
+    }).then(r => res.json(r));
+  });
 
   // Get all doctors
   app.get("/api/doctors", function(req, res) {

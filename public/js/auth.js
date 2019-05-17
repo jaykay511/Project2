@@ -39,7 +39,14 @@ $(() => {
                 loggedIn: false
             }
             $.post("/api/login", newUser, () => {
-                    let userObj = {email: un}
+                    let userObj = {
+                        first_name: "New",
+                        last_name: "User",
+                        address: "unknown",
+                        phone: "xxx.xxx.xxxx",
+                        email: un,
+                        pic: "img/profile.png"
+                    }
                     $.post("/api/users", userObj, () => {
                         console.log("done");
                     });

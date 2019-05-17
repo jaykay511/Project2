@@ -1,13 +1,7 @@
 <div id='main'>
     <header class="jumbotron">
         <h1 class="display-3">Welcome to your UCLA MedDash!</h1>
-        <p class="lead">You're currently logged in with the email {{profile.email}}</p>
-        <hr class="my-4">
-        <p>Are you new to our dashboard? click below to get more info</p>
-        <p class="lead">
-            <br>
-            <a class="btn btn-primary btn-sm" href="#" role="button">Learn more</a>
-        </p>
+        <p class="lead">Hi {{profile.first}}!</p>
     </header>
     <div id = 'body'>
         <div id = 'left'>
@@ -38,25 +32,28 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Leave a Comment</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><span id = 'logout'>Log Out</span></a>
+                </li>
             </ul>
         </div>
         <div id = 'middle'>
-            <div class="container-fluid px-4">
+            <div id = "calendarWrapper" class="container-fluid px-4">
                 <div class="row">
-                <div class="col-xs-12">
+                {{!-- <div class="col-xs-12"> --}}
                     <div id="calendar"></div>
-                </div>
+                {{!-- </div> --}}
                 </div>
             </div>
         </div>
         <div id = 'right'>
             <div class="card mb-3">
-                <h3 class="card-header">{{first}} {{last}}</h3>
+                <h3 class="card-header">{{profile.first}} {{profile.last}}</h3>
                 <div class="card-body">
-                    <h6 class="card-subtitle text-muted">status: {{auth.loggedIn}}</h6>
+                    <h6 class="card-subtitle text-muted">status: <span id = 'stat'>{{> dash/status-block}}</span></h6>
                 </div>
                 <div id = 'profilepic'>
-                    <img style="width: 90%; display: block;" src="img/profile.png" alt="Card image">
+                    <img style="width: 90%; display: block;" src={{profile.pic}} alt="Card image">
                 </div>
                 <div class="card-body">
                     <p class="card-text"></p>
@@ -66,24 +63,80 @@
                     <li class="list-group-item">Phone: <br> {{profile.phone}}</li>
                     <li class="list-group-item">Email: <br> {{profile.email}}</li>
                 </ul>
-                <div class="card-body">
-                    <a href="#" class="card-link">Update Info</a>
+                <div id='updateInfoWrapper' class="card-body">
+                    <div id = 'updatePic' class="card-link">
+                        <h3>Update Picture</h3>
+                    </div>
+                    <div id = 'updateInfo' class="card-link">
+                        <h3>Update Info</h3>
+                    </div>
                 </div>
                 <div class="card-footer text-muted">
-                    Last Login: {{profile.updatedAt}}
+                    Last Login: <span id='lastlogin'>{{profile.updated}}</span>
                 </div>
                 
             </div>
             <div>
-                    <ul class="list-group list-group-flush" style="display:none">
-                        {{#each timeslots}}
-                    <li class="timeslot" data-doctorid={{this.DoctorId}} data-patientid={{this.PatientId}} data-patientname={{this.Patient.last_name}} data-doctorname={{this.Doctor.last_name}} data-doctorspecialty={{this.Doctor.specialty}}>{{this.timeslot}}</li>
-                        {{/each}}
-                </div>
+                <ul class="list-group list-group-flush" style="display:none">
+                    {{#each timeslots}}
+                <li class="timeslot" data-doctorid={{this.DoctorId}} data-patientid={{this.PatientId}} data-patientname={{this.Patient.last_name}} data-doctorname={{this.Doctor.last_name}} data-doctorspecialty={{this.Doctor.specialty}}>{{this.timeslot}}</li>
+                    {{/each}}
+            </div>
         </div>
     </div>
 </div>
+<div id = "upInfo">
+    <div id = 'close'>x</div>
+    <div id = 'upcontainer'>
+        <h1>Update Info</h1>
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm" for="inputSmall">First Name</label>
+            <input class="form-control form-control-sm" type="text" placeholder={{profile.first}} id="firstname">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm" for="inputSmall">Last Name</label>
+            <input class="form-control form-control-sm" type="text" placeholder={{profile.last}} id="lastname">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm" for="inputSmall">Address</label>
+            <input class="form-control form-control-sm" type="text" placeholder={{profile.address}} id="addy">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm" for="inputSmall">Phone</label>
+            <input class="form-control form-control-sm" type="text" placeholder={{profile.phone}} id="tel">
+        </div>
+        <div class="form-group">
+            <fieldset disabled = ''>
+                <label class="col-form-label col-form-label-sm" for="inputSmall">Email</label>
+                <input class="form-control form-control-sm" type="text" placeholder={{profile.email}} id="mail">
+            </fieldset>
+        </div>
+        <button type="submit" id='updatebtn' class="btn btn-primary btn-sm">Update</button>
+        <div id = "modError"><p></p></div>
+    </div>
+</div>
+
+<div id = "upPic">
+    <div id = 'close1'>x</div>
+    <h1>Upload a Profile Pic</h1>
+    <div class="form-group">
+        <label class="col-form-label col-form-label-sm" for="inputSmall">Photo URL</label>
+        <input class="form-control form-control-sm" type="text" placeholder={{profile.pic}} id="piclink">
+    </div>
+    <button type="submit" id='uploadbtn' class="btn btn-primary btn-sm">Upload</button>
+</div>
+
+{{!-- <div id = "drugMod">
+    <div id = 'close2'>x</div>
+    <h1>{{profile.first}}'s Prescriptions</h1>
+    <ul class="list-group">
+        {{#each drugs}}
+    <li class="list-group-item d-flex justify-content-between align-items-center">{{this.drugs.patient.id}}</li>
+        {{/each}}
+    </ul>
+</div> --}}
+
 
 {{!-- <script src="/js/jquery-calendar.js"></script> --}}
 <script src="/js/calendar.js"></script>
-
+<script src="/js/dash.js"></script>
