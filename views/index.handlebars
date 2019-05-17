@@ -1,33 +1,67 @@
 <div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+    <div class="container-fluid" style="background-color:#000066; color: white; padding: 25px">
+      <h1 class="display-4">UCLA Health</h1>
+      <p class="lead" style="padding: 10px 0;">World-class care for our family of patients.</p>
+      <br>
+      <a class="btn btn-primary btn-lg" href="/login/" role="button">Click here to start</a>
+    </div>
+
+  <div class="card-group">
+
+    <div class="card">
+      <img src="img/tools.jpg" class="card-img-top" alt="Medical Tools">
+      <div class="card-body">
+        <p class="card-text" style="font-weight: bold;">Top ranked doctors with over 100 years of experience
+          collectively at your service.</p>
       </div>
     </div>
+
+    <div class="card">
+      <img src="img/stethoscope.jpg" class="card-img-top" alt="Stethoscope">
+      <div class="card-body">
+        <p class="card-text" style="font-weight: bold;">Comprehensive care available. Most insurance accepted. Contact
+          us to check today.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="img/patient.jpg" class="card-img-top" alt="Patient">
+      <div class="card-body">
+        <p class="card-text" style="font-weight: bold;">Ask us about senior care services.</p>
+      </div>
+    </div>
+
   </div>
+
+  <div class="card-group">
+
+    <div class="card">
+      <img src="img/baby.jpg" class="card-img-top" alt="Baby">
+      <div class="card-body">
+        <p class="card-text" style="font-weight: bold;">Whether your little one has arrived or is yet to come, we offer
+          a range of care to help you grow your family.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="img/heart.jpg" class="card-img-top" alt="Heart">
+      <div class="card-body">
+        <p class="card-text" style="font-weight: bold;">Our cardiology doctors are ranked top 5 in the country. [source:
+          U.S. Health]</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="img/pulse.jpg" class="card-img-top" alt="Pulse">
+      <div class="card-body">
+        <p class="card-text" style="font-weight: bold;">Schedule your appointment with us by creating an account above
+          today.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+{{!-- <script src="/js/index.js"></script> --}}
