@@ -1,11 +1,13 @@
-var db = require("../models");
-//console.log(db);
+const db = require("../models");
 
 module.exports = function (app) {
+
+  //Get all patients logins
   app.get("/api/login", (req, res) => {
     db.auth.findAll({}).then(r => res.json(r));
   });
 
+  //Create a new user
   app.post("/api/login", (req, res) => {
     let rb = req.body;
     if (rb.loggedIn) {
@@ -17,6 +19,7 @@ module.exports = function (app) {
     }
   });
 
+  //Change user loggedIn Status from False to True upon login
   app.put("/api/login", (req, res) => {
     console.log(req.body);
     db.auth.update({
@@ -27,6 +30,13 @@ module.exports = function (app) {
       }
     }).then(r => res.json(r));
   });
+
+  //add a patient to patient table when a new user is created
+  app.post("/api/users", (req,res) => {
+    let rb = req.body;
+    //console.log("req.body from api routes: " + rb.email);
+    db.Patient.create(rb).then(res.send("new patient created"));
+  })
 
   // Get all doctors
   app.get("/api/doctors", function(req, res) {
@@ -122,14 +132,14 @@ module.exports = function (app) {
   // Create a new PrescriptionsPatients
   app.post("/api/prescriptionspatients", function(req, res) {
     console.log(req.body);
-    db.PrescriptionsPatients.create(req.body).then(function(dbPrescriptionsPatients) {
+    db.PrescriptionsPatient.create(req.body).then(function(dbPrescriptionsPatients) {
       res.json(dbPrescriptionsPatients);
     });
   });
 
   // Delete an PrescriptionsPatients by id
   app.delete("/api/prescriptionspatients/:id", function(req, res) {
-    db.PrescriptionsPatients.destroy({ where: { id: req.params.id } }).then(function(dbPrescriptionsPatients) {
+    db.PrescriptionsPatient.destroy({ where: { id: req.params.id } }).then(function(dbPrescriptionsPatients) {
       res.json(dbPrescriptionsPatients);
     });
   });

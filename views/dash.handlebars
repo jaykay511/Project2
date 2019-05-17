@@ -1,71 +1,89 @@
-<header class="jumbotron">
-  <h1 class="display-3">Welcome to your UCLA MedDash!</h1>
-  <p class="lead">You're currently logged in with the email {{username}}</p>
-  <hr class="my-4">
-  <p>Are you new to our dashboard? click below to get more info</p>
-  <p class="lead">
-      <br>
-    <a class="btn btn-primary btn-sm" href="#" role="button">Learn more</a>
-  </p>
-</header>
-
 <div id='main'>
-    <div id = 'left'>
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">View Prescriptions</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Appointments</a>
-                <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">New</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Modify</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Cancel</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contact Us</a>
-                <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Email</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Call</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Chat</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Leave a Comment</a>
-            </li>
-        </ul>
-    </div>
-    <div id = 'middle'>
-        <img src="img/cal.png" alt="calendar img">
-    </div>
-    <div id = 'right'>
-        <div class="card mb-3">
-            <h3 class="card-header">Some Name</h3>
-            <div class="card-body">
-                <h6 class="card-subtitle text-muted">status: active</h6>
-            </div>
-            <div id = 'profilepic'>
-                <img style="width: 90%; display: block;" src="img/profile.png" alt="Card image">
-            </div>
-            <div class="card-body">
-                <p class="card-text"></p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Address: <br> 1111 Random St Somewhere, Outthere 00000</li>
-                <li class="list-group-item">Phone: <br> 555.555.5555</li>
-                <li class="list-group-item">Email: <br> {{username}}</li>
+    <header class="jumbotron">
+        <h1 class="display-3">Welcome to your UCLA MedDash!</h1>
+        <p class="lead">You're currently logged in with the email {{profile.email}}</p>
+        <hr class="my-4">
+        <p>Are you new to our dashboard? click below to get more info</p>
+        <p class="lead">
+            <br>
+            <a class="btn btn-primary btn-sm" href="#" role="button">Learn more</a>
+        </p>
+    </header>
+    <div id = 'body'>
+        <div id = 'left'>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">View Prescriptions</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Appointments</a>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">New</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Modify</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Cancel</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contact Us</a>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Email</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Call</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Chat</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Leave a Comment</a>
+                </li>
             </ul>
-            <div class="card-body">
-                <a href="#" class="card-link">Update Info</a>
+        </div>
+        <div id = 'middle'>
+            <div class="container-fluid px-4">
+                <div class="row">
+                <div class="col-xs-12">
+                    <div id="calendar"></div>
+                </div>
+                </div>
             </div>
-            <div class="card-footer text-muted">
-                Last Login: 2 days ago
+        </div>
+        <div id = 'right'>
+            <div class="card mb-3">
+                <h3 class="card-header">{{first}} {{last}}</h3>
+                <div class="card-body">
+                    <h6 class="card-subtitle text-muted">status: {{auth.loggedIn}}</h6>
+                </div>
+                <div id = 'profilepic'>
+                    <img style="width: 90%; display: block;" src="img/profile.png" alt="Card image">
+                </div>
+                <div class="card-body">
+                    <p class="card-text"></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Address: <br> {{profile.address}}</li>
+                    <li class="list-group-item">Phone: <br> {{profile.phone}}</li>
+                    <li class="list-group-item">Email: <br> {{profile.email}}</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Update Info</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Last Login: {{profile.updatedAt}}
+                </div>
+                
             </div>
+            <div>
+                    <ul class="list-group list-group-flush" style="display:none">
+                        {{#each timeslots}}
+                    <li class="timeslot" data-doctorid={{this.DoctorId}} data-patientid={{this.PatientId}} data-patientname={{this.Patient.last_name}} data-doctorname={{this.Doctor.last_name}} data-doctorspecialty={{this.Doctor.specialty}}>{{this.timeslot}}</li>
+                        {{/each}}
+                </div>
         </div>
     </div>
 </div>
+
+{{!-- <script src="/js/jquery-calendar.js"></script> --}}
+<script src="/js/calendar.js"></script>
+

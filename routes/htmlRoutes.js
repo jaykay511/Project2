@@ -1,4 +1,5 @@
 const path = require("path");
+const db = require("../models");
 
 module.exports = function (app) {
   
@@ -11,13 +12,41 @@ module.exports = function (app) {
   });
 
   app.get('/dash', (req,res) => {
-    res.render("dash", {username: req.query.user});
+    let email = req.query.user;
+    db.Patient.findAll({where: {email: email}}).then(r => {
+      let user = r[0];
+      db.auth.findAll({where: {username: email}}).then(re => {
+        let auth = re[0];
+        //TODO: hook user.id to id field
+        db.TimeSlot.findAll({include: [{model: db.Doctor},{model: db.Patient, where: {id: 1}}]}).then(results => {
+          //[db.Doctor, db.Patient],where: {PatientId: user.id}}).then(results => {
+
+      //console.log("this is the user info: " + user.email);
+      res.render("dash", {
+          profile: {
+            id: user.id,
+            first: user.first_name,
+            last: user.last_name,
+            address: user.address,
+            phone: user.phone,
+            email: user.email,
+            created: user.createdAt,
+            updated: user.updatedAt
+          },
+          auth: {
+            loggedIn: auth.loggedIn
+          },
+          timeslots: results
+        });
+      });
+      });
+    });
   });
 
-  app.get("/loggedIn", (req, res) => {
-    console.log(req.query);
-    res.sendFile(path.join(__dirname, "../public/loggedIn.html"));
-  });
+  // app.get("/loggedIn", (req, res) => {
+  //   console.log(req.query);
+  //   res.sendFile(path.join(__dirname, "../public/loggedIn.html"));
+  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
