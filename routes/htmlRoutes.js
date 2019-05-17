@@ -22,8 +22,9 @@ module.exports = function (app) {
       let user = r[0];
       db.auth.findAll({where: {username: email}}).then(re => {
         let auth = re[0];
+        //console.log("user.id:", user.id);
         //TODO: hook user.id to id field
-        db.TimeSlot.findAll({include: [{model: db.Doctor},{model: db.Patient, where: {id: 1}}]}).then(results => {
+        db.TimeSlot.findAll({include: [{model: db.Doctor},{model: db.Patient, where: {id: 4}}]}).then(results => {
           //[db.Doctor, db.Patient],where: {PatientId: user.id}}).then(results => {
 
       //console.log("this is the user info: " + user.email);

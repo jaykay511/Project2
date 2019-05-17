@@ -77,13 +77,14 @@
             <div>
                     <ul class="list-group list-group-flush" style="display:none">
                         {{#each timeslots}}
-                    <li class="timeslot" data-doctorid={{this.DoctorId}} data-patientid={{this.PatientId}} data-patientname={{this.Patient.last_name}} data-doctorname={{this.Doctor.last_name}} data-doctorspecialty={{this.Doctor.specialty}}>{{this.timeslot}}</li>
+                            <li class="timeslot" data-doctorid={{this.DoctorId}} data-patientid={{this.PatientId}} data-patientname={{this.Patient.last_name}} data-doctorname={{this.Doctor.last_name}} data-doctorspecialty={{this.Doctor.specialty}}>{{this.timeslot}}</li>
                         {{/each}}
+                    </ul>
                 </div>
         </div>
     </div>
 </div>
 
-{{!-- <script src="/js/jquery-calendar.js"></script> --}}
+<script src="/js/jquery-calendar.js"></script>
 <script src="/js/calendar.js"></script>
 
