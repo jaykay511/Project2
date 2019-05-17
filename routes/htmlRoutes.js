@@ -2,16 +2,11 @@ const path = require("path");
 const db = require("../models");
 
 module.exports = function (app) {
-  // Load index page
-  // app.get("/", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.render("index", {
-  //       msg: "Welcome!",
-  //       examples: dbExamples
-  //     });
-  //   });
-  // });
-
+  
+  app.get("/", (req, res) => {
+    res.render("index");
+  });
+  
   app.get("/login/", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
