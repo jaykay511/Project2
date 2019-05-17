@@ -37,3 +37,8 @@
     color: red;
     font-size: 12px;
 }
+.container{
+    display: grid;
+    align-self: center;
+    justify-self: center;
+}
