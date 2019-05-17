@@ -17,9 +17,9 @@ module.exports={
     "production": {
       "username": "root",
       "password": process.env.JAWS_DATABASE_PASSWORD,
-      "use_env_variable": "",
-      "database": "",
-      "host": "",
+      "use_env_variable": "JAWSDB_URL",
+      "database": "r48w73ggi8b8i85s",
+      "host": "xq7t6tasopo9xxbs.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
       "dialect": "mysql"
     }
   };
