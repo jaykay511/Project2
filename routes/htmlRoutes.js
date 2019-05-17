@@ -18,8 +18,8 @@ module.exports = function (app) {
       //console.log(user);
       db.auth.findAll({where: {username: email}}).then(re => {
         let auth = re[0];
-        //TODO: hook user.id to id field
-        db.TimeSlot.findAll({include: [{model: db.Doctor},{model: db.Patient, where: {id: 1}}]}).then(results => {
+        //console.log("user.id:", user.id);
+        db.TimeSlot.findAll({include: [{model: db.Doctor},{model: db.Patient, where: {id: user.id}}]}).then(results => {
           //[db.Doctor, db.Patient],where: {PatientId: user.id}}).then(results => {
           let times = results;
           //prescriptions call
